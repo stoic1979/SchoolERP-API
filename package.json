@@ -1,0 +1,29 @@
+{
+  "name": "school-erp-api",
+  "version": "1.0.0",
+  "description": "school erp backend and api",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://weavebytes@bitbucket.org/wbproducts/schoolerp_api.git"
+  },
+  "author": "weavebytes",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/wbproducts/schoolerp_api#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "email-templates": "^3.3.4",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.1",
+    "mongoose": "^5.0.6",
+    "morgan": "^1.9.0",
+    "nodemailer": "^4.4.2",
+    "path": "^0.12.7",
+    "readline-sync": "^1.4.9"
+  }
+}
