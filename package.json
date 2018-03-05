@@ -24,6 +24,8 @@
     "morgan": "^1.9.0",
     "nodemailer": "^4.4.2",
     "path": "^0.12.7",
-    "readline-sync": "^1.4.9"
+    "readline-sync": "^1.4.9",
+    "ts-node": "^5.0.1",
+    "typescript": "^2.7.2"
   }
 }
