@@ -41,7 +41,8 @@ export default class UserController extends BaseController {
     // Get by email
     getUser = (req, callback) => {
         console.log('[UsersController] getUser by email');
-        this.model.findOne({ email: req.body.email }, callback).select('+password');
+        this.model.findOne({ email: req.body.email }, callback);
+        //this.model.findOne({ email: req.body.email }, callback).select('+password');
     }
 
     getUserByToken = (req, res) => {
