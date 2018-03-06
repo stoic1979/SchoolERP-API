@@ -25,13 +25,17 @@ export default class AuthController extends UserController {
                     'error': 'Not Found User'
                 });
             } else {
+
+                console.error("AuthController -> req.body.password: " + req.body.password);
+                console.error("AuthController -> user.password: " + user.password);
+
                 user.comparePassword(req.body.password, user.password, (error, isMatch) => {
                     if (error) {
                         res.status(500).json({
                             'success': false,
                             'error': 'Can\'t compare password'
                         });
-                        return console.error(error);
+                        return console.error("AuthController -> comparePassword error: " + error);
                     }
                     if (isMatch) {
 

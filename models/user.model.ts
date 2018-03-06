@@ -55,7 +55,11 @@ userSchema.pre('save', function(next) {
 
 userSchema.methods.comparePassword = (candidatePassword, existPassword, cb) => {
     bcrypt.compare(candidatePassword, existPassword, (err, isMatch) => {
-        if (err) { return cb(err); }
+        if (err) { 
+
+            console.log("user schema error on comapare password: " + err);
+            return cb(err); 
+        }
         cb(null, isMatch);
     });
 };
