@@ -25,7 +25,7 @@ export default class AuthController extends UserController {
                     'error': 'Not Found User'
                 });
             } else {
-
+                console.error("AuthController -> got user: " + JSON.stringify(user));
                 console.error("AuthController -> req.body.password: " + req.body.password);
                 console.error("AuthController -> user.password: " + user.password);
 
