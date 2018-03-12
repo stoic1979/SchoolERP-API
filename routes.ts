@@ -53,7 +53,7 @@ export default function setRoutes (app) {
     //----------------------------------
     // Student APIs
     //----------------------------------
-    app.route('/api/students').get(verifyToken, studentCtrl.getStudents); // get all students
+    app.route('/api/students/all').post(verifyToken, studentCtrl.getStudents); // get all students
     app.route('/api/student/:id').get(verifyToken, studentCtrl.get); // get student by id
 
     //---------------------------------------

@@ -7,9 +7,11 @@ export default class StudentController extends BaseController {
     //getStudents
     getStudents = (req, res) => {
 
-        console.log('[StudentController] getStudents');
+        console.log("[StudentController] :: data: " + JSON.stringify(req.body) );
 
-        this.model.find()
+        var query = req.body;
+
+        this.model.find(query)
         .populate('parent')
         .exec((err, obj) => {
             if (err) { return console.error(err); }
