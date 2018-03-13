@@ -9,6 +9,10 @@ const principalSchema = new mongoose.Schema({
     name: {
         type:String,
     },
+    gender: {
+        type: String,
+        enum: ['MALE', 'FEMALE'],
+    },
     dob: {
         type:Date,
     },

@@ -13,7 +13,6 @@ const studentSchema = new mongoose.Schema({
         type: String,
         enum: ['MALE', 'FEMALE'],
     },
-
     lib_no: String,
     section:String,
     standard:String,
