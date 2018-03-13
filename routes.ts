@@ -83,7 +83,7 @@ export default function setRoutes (app) {
     //---------------------------------------
     // Principal APIs
     //--------------------------------------
-    app.route('/api/principal').get(verifyToken, principalCtrl.getUser); // get  principal
+    app.route('/api/principal').get(verifyToken, principalCtrl.getUsers); // get  principal
     app.route('/api/principal/:id').get(verifyToken, principalCtrl.get); // get principal by id
 
     //-------------------------
