@@ -174,6 +174,8 @@ export default class UserController extends BaseController {
                         name: req.body.name,
                         gender: req.body.gender,
                         lib_no: req.body.lib_no,
+                        standard: req.body.standard,
+                        section: req.body.section,
                         dob: req.body.dob,
                         doj: req.body.doj,
                         previous_school: req.body.previous_school,
