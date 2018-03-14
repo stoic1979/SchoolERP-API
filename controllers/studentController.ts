@@ -15,6 +15,7 @@ export default class StudentController extends BaseController {
         .populate('parent')
         .exec((err, obj) => {
             if (err) { return console.error(err); }
+
             res.json({
                 'success': true,
                 'data': obj
