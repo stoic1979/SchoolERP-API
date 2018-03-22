@@ -6,7 +6,8 @@ const stationerySchema = new mongoose.Schema({
         type:String,
     },
     unit: {
-        type:String,
+         type: mongoose.Schema.Types.ObjectId, 
+         refs: 'StationeryUnit'
     },
     qty_per_unit: {
         type:String,

@@ -11,6 +11,7 @@ import PrincipalController from './controllers/principalController';
 import StationeryController from './controllers/stationeryController';
 import FeeController from './controllers/feeController';
 import BusRouteController from './controllers/busRouteController';
+import StationeryUnitController from './controllers/stationeryUnitController';
 import * as verifyToken from './controllers/verifyToken';
 
 export default function setRoutes (app) {
@@ -28,7 +29,7 @@ export default function setRoutes (app) {
     const stationeryCtrl = new StationeryController();
     const feeCtrl = new FeeController();
     const busRouteCtrl = new BusRouteController();
-
+    const stationeryUnitCtrl= new StationeryUnitController();
     //-------------------------
     // Auth APIs
     //-------------------------
@@ -112,6 +113,16 @@ export default function setRoutes (app) {
     app.route('/api/stationery/:id').put(verifyToken, stationeryCtrl.update); // update stationery by id
     app.route('/api/stationery').post(verifyToken, stationeryCtrl.insert); // save stationery
     app.route('/api/stationery/:id').delete(verifyToken, stationeryCtrl.delete); // delete stationery by id
+
+    //-------------------------
+    // Stationery Unit APIs
+    //-------------------------
+
+    app.route('/api/stationeryunit').get(verifyToken, stationeryUnitCtrl.getAll); // get all stationery items
+    app.route('/api/stationeryunit/:id').get(verifyToken, stationeryUnitCtrl.get); // get stationery by id
+    app.route('/api/stationeryunit/:id').put(verifyToken, stationeryUnitCtrl.update); // update stationery by id
+    app.route('/api/stationeryunit').post(verifyToken, stationeryUnitCtrl.insert); // save stationery
+    app.route('/api/stationeryunit/:id').delete(verifyToken, stationeryUnitCtrl.delete); // delete stationery by id
 
     //-------------------------
     // Fee APIs
