@@ -24,4 +24,20 @@ export default class StudentController extends BaseController {
 
     } // getStudents
 
+    getStudentById = (req, res) => {
+
+        this.model.find({_id: req.params.id})
+        .populate('parent')
+        .exec((err, obj) => {
+            if (err) { return console.error(err); }
+
+            console.log("[StudentController] getStudentById :: data: " + obj);
+            res.json({
+                'success': true,
+                'data': obj
+            });
+        });
+
+    } // getStudents
+
 }
