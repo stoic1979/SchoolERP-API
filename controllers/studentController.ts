@@ -39,5 +39,19 @@ export default class StudentController extends BaseController {
         });
 
     } // getStudents
+    
+    //getTotalStudents
+    getTotalStudents = (req, res) => {
 
+        console.log("[StudentController] :: data: " + JSON.stringify(req.body) );
+
+        this.model.count({}, function( err, count){
+         console.log( "Number of students:", count );
+         res.json({
+                'success': true,
+                'totalstudents': count
+            });
+        });
+
+    } // getTotalStudents
 }

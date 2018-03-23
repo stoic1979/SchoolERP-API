@@ -41,6 +41,12 @@ export default function setRoutes (app) {
     app.route('/api/auth/forgot-password').post(authCtrl.resetPassword);
 
     //-------------------------
+    // Dashboard APIs
+    //-------------------------
+    app.route('/api/totalstudents').get(verifyToken, studentCtrl.getTotalStudents);
+    app.route('/api/totalteachers').get(verifyToken, teacherCtrl.getTotalTeachers);
+
+    //-------------------------
     // User APIs
     //-------------------------
     app.route('/api/users').get(verifyToken, userCtrl.getAll); // get all users

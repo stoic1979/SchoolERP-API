@@ -22,4 +22,19 @@ export default class TeacherController extends BaseController {
         });
 
     } // getTeachers
+
+    //getTotalTeachers
+    getTotalTeachers = (req, res) => {
+
+        console.log("[TeacherController] :: data: " + JSON.stringify(req.body) );
+
+        this.model.count({}, function( err, count){
+         console.log( "Number of Teachers:", count );
+         res.json({
+                'success': true,
+                'totalteachers': count
+            });
+        });
+
+    } // getTotalTeachers
 }
