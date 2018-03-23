@@ -4,10 +4,12 @@ const busRouteSchema = new mongoose.Schema({
 
     bus_no: {
         type:String,
+        required:true
     },
     bus_schedule: {
         type:String,
-        enum:['MORNING', 'AFTERNOON']
+        enum:['MORNING', 'AFTERNOON'],
+        required:true
     },
     first_stop_name: {
         type:String,

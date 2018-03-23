@@ -6,7 +6,7 @@ const SALT_WORK_FACTOR = 10;
 const userSchema = new mongoose.Schema({
 
     email:    { type: String, required: true, unique: true },
-    password: { type: String },
+    password: { type: String, required: true },
     role: {
         type: String,
         enum: ['SUPER_ADMIN', 'ADMIN', 'PRINCIPAL', 'TEACHER', 'SPLECIALIST-TEACHER', 'FINANCE-MANAGER', 'TRANSPORT-MANAGER', 'PARENT', 'COUNSELLOR', 'STUDENT'],

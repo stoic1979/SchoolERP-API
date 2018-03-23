@@ -4,13 +4,16 @@ const stationerySchema = new mongoose.Schema({
 
     name: {
         type:String,
+        required:true
     },
     unit: {
          type: mongoose.Schema.Types.ObjectId, 
-         refs: 'StationeryUnit'
+         refs: 'StationeryUnit',
+        required:true
     },
     qty_per_unit: {
         type:String,
+        required:true
     },
 
     created_at:   Date,

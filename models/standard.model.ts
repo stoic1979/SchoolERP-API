@@ -2,8 +2,14 @@ import * as mongoose from 'mongoose';
 
 const standardSchema = new mongoose.Schema({
 
-    name:         String,
-    passout_year: Number,
+    name:    {
+        type: String,
+        required:true
+    },
+    passout_year: {
+        type:String,
+        required:true
+    },
     created_at:   Date,
     updated_at:   Date
 });

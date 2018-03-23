@@ -4,6 +4,7 @@ const stationeryUnitSchema = new mongoose.Schema({
 
     name: {
         type:String,
+        required:true
     },
     created_at:   Date,
     updated_at:   Date

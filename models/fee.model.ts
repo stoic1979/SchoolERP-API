@@ -4,16 +4,20 @@ const feeSchema = new mongoose.Schema({
 
     fee_head: {
         type:String,
+        required:true
     },
     code: {
         type:String,
+        required:true
     },
     amount: {
         type:String,
+        required:true
     },
 
     due_date: {
         type:Date,
+        required:true
     }, 
 
     created_at:   Date,

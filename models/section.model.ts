@@ -4,9 +4,13 @@ const sectionSchema = new mongoose.Schema({
 
     standard: {
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Standard'
+        ref: 'Standard',
+        required:true
     },
-    name: String,
+    name: {
+        type:String,
+        required:true
+    },
     max_student_cnt: Number,
     created_at:   Date,
     updated_at:   Date

@@ -4,31 +4,38 @@ const parentSchema = new mongoose.Schema({
 
     user: {
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'User'
+        ref: 'User',
+        required:true
     },
     mother_name: {
         type:String,
+        required:true
     },
     mother_email: {
         type:String,
+        required:true
     },
     mother_mob_no: {
         type:String,
+        required:true
     },
 
     mother_tel_no: {
-        type:String,
+        type:String
     },
     father_name: {
         type:String,
+        required:true
     },
 
     father_email: {
         type:String,
+        required:true
     },
 
     father_mob_no: {
         type:String,
+        required:true
     },
     father_tel_no: {
         type:String,

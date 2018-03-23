@@ -4,22 +4,40 @@ const studentSchema = new mongoose.Schema({
 
     parent: {
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Parent'
+        ref: 'Parent',
+        required:true
     },
     name: {
         type:String,
+        required:true
     },
     gender: {
         type: String,
         enum: ['MALE', 'FEMALE'],
+        required:true
     },
     lib_no: String,
-    standard:String,
-    section:String,
-    dob:Date,
-    doj:Date,
+    standard:{
+       type: String,
+        required:true
+    },
+    section:{
+       type: String,
+        required:true
+    },
+    dob:{
+       type: Date,
+       required:true
+    },
+    doj:{
+       type: Date,
+       required:true
+    },
     previous_school:String,
-    aadhar_id:String,
+    aadhar_id:{
+       type: String,
+        required:true
+    },
 
     created_at:   Date,
     updated_at:   Date

@@ -131,11 +131,11 @@ export default function setRoutes (app) {
     // Attendance APIs
     //-------------------------
 
-    app.route('/api/attendance').get(verifyToken, attendanceCtrl.getAll); // get all stationery items
-    app.route('/api/attendance/:id').get(verifyToken, attendanceCtrl.get); // get stationery by id
-    app.route('/api/attendance/:id').put(verifyToken, attendanceCtrl.update); // update stationery by id
-    app.route('/api/attendance').post(verifyToken, attendanceCtrl.insert); // save stationery
-    app.route('/api/attendance/:id').delete(verifyToken, attendanceCtrl.delete); // delete stationery by id
+    app.route('/api/attendance').get(verifyToken, attendanceCtrl.getAll); // get all attendance
+    app.route('/api/attendance/:id').get(verifyToken, attendanceCtrl.get); // get attendance by id
+    app.route('/api/attendance/:id').put(verifyToken, attendanceCtrl.update); // update attendance by id
+    app.route('/api/attendance').post(verifyToken, attendanceCtrl.insert); // save attendance
+    app.route('/api/attendance/:id').delete(verifyToken, attendanceCtrl.delete); // delete attendance by id
 
     //-------------------------
     // Fee APIs

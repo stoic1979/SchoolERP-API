@@ -4,12 +4,22 @@ const attendanceSchema = new mongoose.Schema({
 
     user_id: {
          type: mongoose.Schema.Types.ObjectId, 
-         refs: 'User'
+         refs: 'User',
+         required : true
     },
-    date:         Date,
-    isLate:       Boolean,
-    arrival_time: String,
-    status:       String,
+    date: Date,
+    isLate: {
+        type: Boolean,
+        required: true
+    } ,
+    arrival_time: {
+        type: String,
+        required: true
+    },
+    status: {
+        type:String,
+        required:true
+    },
     remarks:      String,
     created_at:   Date,
     updated_at:   Date
