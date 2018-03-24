@@ -24,21 +24,21 @@ export default class StudentController extends BaseController {
 
     } // getStudents
 
+    // getStudentById
     getStudentById = (req, res) => {
 
-        this.model.find({_id: req.params.id})
+        console.log('[UsersController] get, id: [' + req.params.id + ']');
+
+        this.model.findOne({ _id: req.params.id })
         .populate('parent')
         .exec((err, obj) => {
             if (err) { return console.error(err); }
-
-            console.log("[StudentController] getStudentById :: data: " + obj);
             res.json({
                 'success': true,
                 'data': obj
             });
         });
-
-    } // getStudents
+    } //getStudentById
     
     //getTotalStudents
     getTotalStudents = (req, res) => {
