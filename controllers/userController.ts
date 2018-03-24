@@ -12,9 +12,6 @@ import TransportManager from '../models/transportManager.model';
 import FinanceManager from '../models/financeManager.model';
 import Principal from '../models/principal.model';
 
-
-import Profile from '../models/profile.model';
-
 import BaseController from './baseController';
 
 export default class UserController extends BaseController {

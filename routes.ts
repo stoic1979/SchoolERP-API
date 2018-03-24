@@ -70,31 +70,31 @@ export default function setRoutes (app) {
     // Teacher APIs
     //--------------------------------------
     app.route('/api/teachers/all').post(verifyToken, teacherCtrl.getTeachers); // get all teachers
-    app.route('/api/teacher/:id').get(verifyToken, teacherCtrl.get); // get teacher by id
+    app.route('/api/teacher/:id').get(verifyToken, teacherCtrl.getUserById); // get teacher by id
 
     //---------------------------------------
     // Counsellor APIs
     //--------------------------------------
     app.route('/api/counsellors/all').post(verifyToken, counsellorCtrl.getCounsellors); // get all counsellors
-    app.route('/api/counsellor/:id').get(verifyToken, counsellorCtrl.get); // get counsellor by id
+    app.route('/api/counsellor/:id').get(verifyToken, counsellorCtrl.getUserById); // get counsellor by id
 
     //---------------------------------------
     // Finance Manager APIs
     //--------------------------------------
     app.route('/api/financeManagers/all').post(verifyToken, financeMngrCtrl.getFinanceManagers); // get all finance managers
-    app.route('/api/financeManager/:id').get(verifyToken, financeMngrCtrl.get); // get finance manager by id
+    app.route('/api/financeManager/:id').get(verifyToken, financeMngrCtrl.getUserById); // get finance manager by id
 
     //---------------------------------------
     // Transport Manager APIs
     //--------------------------------------
     app.route('/api/transportManagers/all').post(verifyToken, transportMngrCtrl.getTransportManagers); // get all transport managers
-    app.route('/api/transportManager/:id').get(verifyToken, transportMngrCtrl.get); // get transport manager by id
+    app.route('/api/transportManager/:id').get(verifyToken, transportMngrCtrl.getUserById); // get transport manager by id
 
     //---------------------------------------
     // Principal APIs
     //--------------------------------------
     app.route('/api/principal').get(verifyToken, principalCtrl.getUsers); // get  principal
-    app.route('/api/principal/:id').get(verifyToken, principalCtrl.get); // get principal by id
+    app.route('/api/principal/:id').get(verifyToken, principalCtrl.getUserById); // get principal by id
 
     //-------------------------
     // Standard APIs

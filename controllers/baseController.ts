@@ -30,6 +30,23 @@ abstract class BaseController {
 
     } // getUsers
 
+
+    //get user by id
+    getUserById = (req, res) => {
+
+        console.log('[UsersController] get, id: [' + req.params.id + ']');
+
+        this.model.findOne({ _id: req.params.id })
+        .populate('user')
+        .exec((err, obj) => {
+            if (err) { return console.error(err); }
+            res.json({
+                'success': true,
+                'data': obj
+            });
+        });
+    } //get user by id 
+
     // Count all
     count = (req, res) => {
         this.model.count((err, count) => {
