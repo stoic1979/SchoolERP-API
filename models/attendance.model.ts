@@ -2,19 +2,27 @@ import * as mongoose from 'mongoose';
 
 const attendanceSchema = new mongoose.Schema({
 
-    user_id: {
+    user: {
          type: mongoose.Schema.Types.ObjectId, 
          refs: 'User',
+         required : true
+    },
+    standard: {
+         type: mongoose.Schema.Types.ObjectId, 
+         refs: 'Standard',
+         required : true
+    },
+    section: {
+         type: mongoose.Schema.Types.ObjectId, 
+         refs: 'Section',
          required : true
     },
     date: Date,
     isLate: {
         type: Boolean,
-        required: true
     } ,
     arrival_time: {
         type: String,
-        required: true
     },
     status: {
         type:String,
@@ -24,7 +32,6 @@ const attendanceSchema = new mongoose.Schema({
     created_at:   Date,
     updated_at:   Date
 });
-
 
 attendanceSchema.pre('save', function(next) {
 

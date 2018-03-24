@@ -142,7 +142,8 @@ export default function setRoutes (app) {
     app.route('/api/attendance/:id').put(verifyToken, attendanceCtrl.update); // update attendance by id
     app.route('/api/attendance').post(verifyToken, attendanceCtrl.insert); // save attendance
     app.route('/api/attendance/:id').delete(verifyToken, attendanceCtrl.delete); // delete attendance by id
-
+    app.route('/api/attendance/standard/:standard/:section/:date').get(verifyToken, attendanceCtrl.getAttendanceByStandard);//get attendance by standard and section
+    app.route('/api/attendance/update').post(verifyToken, attendanceCtrl.updateAttendance);//update attendance by user and date
     //-------------------------
     // Fee APIs
     //-------------------------
