@@ -107,7 +107,8 @@ export default class UserController extends BaseController {
     }
 
     addUser = (req, res) => {
-
+        console.log("(addUser) requested data "+JSON.stringify(req.body));
+        
          if(req.body.role == "STUDENT"){
             const obj = new User({
                 email: req.body.mother_email,
