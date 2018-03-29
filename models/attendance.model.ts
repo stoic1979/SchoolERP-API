@@ -7,14 +7,16 @@ const attendanceSchema = new mongoose.Schema({
          refs: 'User',
          required : true
     },
+    lib_no: {
+        type: String,
+        required : true
+    },
     standard: {
-         type: mongoose.Schema.Types.ObjectId, 
-         refs: 'Standard',
+         type: String, 
          required : true
     },
     section: {
-         type: mongoose.Schema.Types.ObjectId, 
-         refs: 'Section',
+         type: String, 
          required : true
     },
     date: Date,
