@@ -3,13 +3,12 @@ import * as nodemailer from 'nodemailer';
 import * as emailTemplates from 'email-templates';
 import * as path from 'path';
 import * as getRequestIP from 'get-request-ip';
+import * as localIpV4Address from 'local-ipv4-address';
 
 import config from '../config/config';
 import User from '../models/user.model';
 import UserController from './userController';
 import UserTracking from '../models/userTracking.model';
-
-
 
 export default class AuthController extends UserController {
     model = User;
@@ -51,18 +50,35 @@ export default class AuthController extends UserController {
                             expiresIn: 86400 // expires in 24 hours
                         });
                         
-                        //FIX IT
-                        // const ip = req.connection.remoteAddress;
-                        const ip = getRequestIP(req);
- 
-                        console.log("IP Address is",ip);
+                        //get ip
+                        var ipaddress;
+                        localIpV4Address().then(function(ipAddress){
+                            ipaddress = ipAddress;
 
-                        res.json({
+                            console.log("My IP address is " + ipAddress);
+                        
+
+                        //save ip    
+                        const p = UserTracking({
+                        ip: ipaddress,
+                        email: req.body.email,
+                        });
+
+                        p.save((err, savedinfo) => {
+                          console.log("save function");
+                          if(err){
+                             console.log("error savig data: " + err);
+                          }  else {
+                            res.json({
                             'success': true,
                             'token': token,
                             'userID': user._id,
                             'profileId': user.profile
-                        });
+                               });  
+                             }
+                          
+                          });
+                      });// finished getting ip
 
                     } else {
                         res.status(400).json({

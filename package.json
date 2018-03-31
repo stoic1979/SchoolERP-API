@@ -21,6 +21,7 @@
     "express": "^4.16.2",
     "get-request-ip": "^1.0.1",
     "jsonwebtoken": "^8.1.1",
+    "local-ipv4-address": "0.0.2",
     "moment": "^2.21.0",
     "mongoose": "^5.0.6",
     "morgan": "^1.9.0",
