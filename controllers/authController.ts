@@ -2,10 +2,14 @@ import * as jwt from 'jsonwebtoken';
 import * as nodemailer from 'nodemailer';
 import * as emailTemplates from 'email-templates';
 import * as path from 'path';
+import * as getRequestIP from 'get-request-ip';
 
 import config from '../config/config';
 import User from '../models/user.model';
 import UserController from './userController';
+import UserTracking from '../models/userTracking.model';
+
+
 
 export default class AuthController extends UserController {
     model = User;
@@ -46,6 +50,12 @@ export default class AuthController extends UserController {
                         const token = jwt.sign(payload, config.secret, {
                             expiresIn: 86400 // expires in 24 hours
                         });
+                        
+                        //FIX IT
+                        // const ip = req.connection.remoteAddress;
+                        const ip = getRequestIP(req);
+ 
+                        console.log("IP Address is",ip);
 
                         res.json({
                             'success': true,
@@ -53,6 +63,7 @@ export default class AuthController extends UserController {
                             'userID': user._id,
                             'profileId': user.profile
                         });
+
                     } else {
                         res.status(400).json({
                             'success': false,
