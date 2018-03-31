@@ -49,16 +49,20 @@ export default class AuthController extends UserController {
                         const token = jwt.sign(payload, config.secret, {
                             expiresIn: 86400 // expires in 24 hours
                         });
-                        
-                        //get ip
-                        var ipaddress;
-                        localIpV4Address().then(function(ipAddress){
-                            ipaddress = ipAddress;
 
-                            console.log("My IP address is " + ipAddress);
-                        
 
-                        //save ip    
+
+                        var ipaddress = req.headers['x-forwarded-for'] ||
+       req.connection.remoteAddress ||
+       req.socket.remoteAddress ||
+       (req.connection.socket ? req.connection.socket.remoteAddress : null);
+
+
+
+                            console.log("My IP address is " + ipaddress);
+
+
+                        //save ip
                         const p = UserTracking({
                         ip: ipaddress,
                         email: req.body.email,
@@ -74,11 +78,10 @@ export default class AuthController extends UserController {
                             'token': token,
                             'userID': user._id,
                             'profileId': user.profile
-                               });  
+                               });
                              }
-                          
+
                           });
-                      });// finished getting ip
 
                     } else {
                         res.status(400).json({
