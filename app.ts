@@ -35,7 +35,7 @@ db.once('open', () => {
     });
 
     app.listen(app.get('port'), () => {
-        console.log('MEAM REPVSREP listening on port ' + app.get('port'));
+        console.log('School ERP server listening on port ' + app.get('port'));
     });
 
 });
