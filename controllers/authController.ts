@@ -53,14 +53,11 @@ export default class AuthController extends UserController {
 
 
                         var ipaddress = req.headers['x-forwarded-for'] ||
-       req.connection.remoteAddress ||
-       req.socket.remoteAddress ||
-       (req.connection.socket ? req.connection.socket.remoteAddress : null);
-
-
+                           req.connection.remoteAddress ||
+                           req.socket.remoteAddress ||
+                           (req.connection.socket ? req.connection.socket.remoteAddress : null);
 
                             console.log("My IP address is " + ipaddress);
-
 
                         //save ip
                         const p = UserTracking({
@@ -77,7 +74,9 @@ export default class AuthController extends UserController {
                             'success': true,
                             'token': token,
                             'userID': user._id,
-                            'profileId': user.profile
+                            'profileId': user.profile,
+                            'role': user.role
+                         
                                });
                              }
 

@@ -12,7 +12,7 @@ export default class StudentController extends BaseController {
         var query = req.body;
 
         this.model.find(query)
-        .populate('parent')
+        .populate({ path:'parent', populate:{ path:'user' } })
         .exec((err, obj) => {
             if (err) { return console.error(err); }
 
@@ -40,13 +40,13 @@ export default class StudentController extends BaseController {
         });
     } //getStudentById
     
-    //getTotalStudents
+ //getTotalStudents
     getTotalStudents = (req, res) => {
 
-        console.log("[StudentController] :: data: " + JSON.stringify(req.body) );
+        console.log("[StudentController] ::(getTotalStudents) data: " + JSON.stringify(req.body) );
 
         this.model.count({}, function( err, count){
-         console.log( "Number of students:", count );
+         console.log( "Number of Students:", count );
          res.json({
                 'success': true,
                 'totalstudents': count

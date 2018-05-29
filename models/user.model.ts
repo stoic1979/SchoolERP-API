@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
         enum: ['SUPER_ADMIN', 'ADMIN', 'PRINCIPAL', 'TEACHER', 'SPLECIALIST-TEACHER', 'FINANCE-MANAGER', 'TRANSPORT-MANAGER', 'PARENT', 'COUNSELLOR', 'STUDENT'],
         required: true
     },
-
+    img: { type: String , required: false},
     created_at: Date,
     updated_at: Date
 });

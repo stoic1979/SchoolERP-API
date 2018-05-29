@@ -3,4 +3,7 @@ import BaseController from './baseController';
 
 export default class StationeryController extends BaseController {
     model = Stationery;
+
+
+ 
 }

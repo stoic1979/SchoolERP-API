@@ -1,5 +1,7 @@
 import * as jwt from 'jsonwebtoken';
 import * as bcrypt from 'bcrypt';
+import * as base64 from 'node-base64-image';
+import * as fs from 'fs';
 
 import config from '../config/config';
 
@@ -107,25 +109,39 @@ export default class UserController extends BaseController {
     }
 
     addUser = (req, res) => {
-        console.log("(addUser) requested data "+JSON.stringify(req.body));
-        
-         if(req.body.role == "STUDENT"){
+        console.log("(addUser) requested data "+JSON.stringify(req.body))               
+         if(req.body.role == "STUDENT"){  
+
+             if (req.body.img) {
+
+                var buff = new Buffer(req.body.img.value
+                .replace(/^data:image\/(png|gif|jpeg|jpg);base64,/,''), 'base64');
+                var file = './public/uploads/'+ req.body.img.filename
+                var image = '/uploads/'+ req.body.img.filename
+                console.log("Image "+image);
+                fs.writeFile(file, buff, function (err) {
+                console.log('error' + err);
+                    });
+                }
+
             const obj = new User({
                 email: req.body.mother_email,
                 password: req.body.password,
-                role: req.body.role
-
+                role: req.body.role,
+                img:image
             });
         }
+          
         else  {
             const obj = new User({
                 email: req.body.email,
                 password: req.body.password,
-                role: req.body.role
+                role: req.body.role,
+                img:image
 
             });
         }
-        obj.save((err, savedUser) => {
+            obj.save((err, savedUser) => {
             
             if (err) {
                 res.status(400).json({
@@ -195,6 +211,7 @@ export default class UserController extends BaseController {
                             'success': true,
                             'token': token,
                             'userID': savedUser._id,
+
                         });
                     });//s.save
                 
@@ -208,7 +225,6 @@ export default class UserController extends BaseController {
                     user: savedUser._id,
                     name: req.body.name,
                     dob: req.body.dob,
-                    doj: req.body.doj,
                     doj: req.body.doj,
                     marital_status: req.body.marital_status,
                     tel_no: req.body.tel_no,
@@ -246,7 +262,6 @@ export default class UserController extends BaseController {
                     name: req.body.name,
                     dob: req.body.dob,
                     doj: req.body.doj,
-                    doj: req.body.doj,
                     marital_status: req.body.marital_status,
                     tel_no: req.body.tel_no,
                     father_name: req.body.father_name,
@@ -282,7 +297,6 @@ export default class UserController extends BaseController {
                     user: savedUser._id,
                     name: req.body.name,
                     dob: req.body.dob,
-                    doj: req.body.doj,
                     doj: req.body.doj,
                     marital_status: req.body.marital_status,
                     tel_no: req.body.tel_no,
@@ -320,7 +334,6 @@ export default class UserController extends BaseController {
                     name: req.body.name,
                     dob: req.body.dob,
                     doj: req.body.doj,
-                    doj: req.body.doj,
                     marital_status: req.body.marital_status,
                     tel_no: req.body.tel_no,
                     father_name: req.body.father_name,
@@ -356,7 +369,6 @@ export default class UserController extends BaseController {
                     user: savedUser._id,
                     name: req.body.name,
                     dob: req.body.dob,
-                    doj: req.body.doj,
                     doj: req.body.doj,
                     marital_status: req.body.marital_status,
                     tel_no: req.body.tel_no,
@@ -421,4 +433,20 @@ export default class UserController extends BaseController {
             });
         });
     }
+
+     //get profile image by userid
+    getProfileImage = (req, res) => { 
+        
+        console.log('[UsersController] getProfileImage, id: [' + req.params.id + ']');
+
+        this.model.findOne({ _id: req.params.id })
+        .populate('users')
+        .exec((err, user) => {
+            if (err) { return console.error(err); }
+            var imgUrl = user.img;
+            console.log("Image ",imgUrl);
+            res.sendfile(imgUrl);
+        });
+       
+    }//getProfileImage   
 }

@@ -65,13 +65,13 @@ export default function setRoutes (app) {
     //----------------------------------
     app.route('/api/students/all').post(verifyToken, studentCtrl.getStudents); // get all students
     app.route('/api/student/:id').get(verifyToken, studentCtrl.getStudentById); // get student by id
-
+   
     //---------------------------------------
     // Teacher APIs
     //--------------------------------------
     app.route('/api/teachers/all').post(verifyToken, teacherCtrl.getTeachers); // get all teachers
     app.route('/api/teacher/:id').get(verifyToken, teacherCtrl.getUserById); // get teacher by id
-
+   
     //---------------------------------------
     // Counsellor APIs
     //--------------------------------------
@@ -127,7 +127,7 @@ export default function setRoutes (app) {
     // Stationery Unit APIs
     //-------------------------
 
-    app.route('/api/stationeryunit').get(verifyToken, stationeryUnitCtrl.getAll); // get all stationery items
+    app.route('/api/stationeryunit').post(verifyToken, stationeryUnitCtrl.getStationary); // get all stationery items
     app.route('/api/stationeryunit/:id').get(verifyToken, stationeryUnitCtrl.get); // get stationery by id
     app.route('/api/stationeryunit/:id').put(verifyToken, stationeryUnitCtrl.update); // update stationery by id
     app.route('/api/stationeryunit').post(verifyToken, stationeryUnitCtrl.insert); // save stationery
@@ -137,10 +137,10 @@ export default function setRoutes (app) {
     // Attendance APIs
     //-------------------------
 
-    app.route('/api/attendance').get(verifyToken, attendanceCtrl.getAll); // get all attendance
+    app.route('/api/attendance').post(verifyToken, attendanceCtrl.getAttendence); // get all attendance
     app.route('/api/attendance/:id').get(verifyToken, attendanceCtrl.get); // get attendance by id
     app.route('/api/attendance/:id').put(verifyToken, attendanceCtrl.update); // update attendance by id
-    app.route('/api/attendance').post(verifyToken, attendanceCtrl.insert); // save attendance
+    app.route('/api/attendanceadd').post(verifyToken, attendanceCtrl.insert); // save attendance
     app.route('/api/attendance/:id').delete(verifyToken, attendanceCtrl.delete); // delete attendance by id
     app.route('/api/attendance/standard/:standard/:section/:date').get(verifyToken, attendanceCtrl.getAttendanceByStandard);//get attendance by standard and section
     app.route('/api/attendance/update').post(verifyToken, attendanceCtrl.updateAttendance);//update attendance by user and date
@@ -161,4 +161,13 @@ export default function setRoutes (app) {
     app.route('/api/busRoute/:id').put(verifyToken, busRouteCtrl.update); // update bus route by id
     app.route('/api/busRoute').post(verifyToken, busRouteCtrl.insert); // save bus route
     app.route('/api/busRoute/:id').delete(verifyToken, busRouteCtrl.delete); // delete bus route by id
+
+
+    // --------------------------------
+    // User Profile Image APIs
+    // --------------------------------
+    app.route('/api/user/getProfileImage/:id').get(verifyToken, userCtrl.getProfileImage); 
+    
 }
+
+

@@ -1,10 +1,12 @@
 import Attendance from '../models/attendance.model';
 import BaseController from './baseController';
 import * as moment from 'moment';
+import Student from '../models/student.model';
 
 export default class AttendanceController extends BaseController {
 	
 	model = Attendance;
+    model1 = Student;
 
 	getAttendanceByStandard = (req, res) => {
         console.log('[AttendanceController] getAttendanceByStandard');
@@ -43,5 +45,21 @@ export default class AttendanceController extends BaseController {
                 
             }  
         });
+    }
+
+    getAttendence = (req,res) =>{
+        console.log('[AttendanceController] getAttendance')
+        var query = req.body;
+        this.model.find(query)
+        .populate({ path:'student', populate:{ path:'user' } })      
+        .exec((err, obj) => {
+            if (err) { return console.error(err); }
+
+            res.json({
+                'success': true,
+                'data': obj
+            });
+        });
+
     }
 }
